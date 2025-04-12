@@ -60,3 +60,10 @@ To test basic broadcast functionality, you need to enable ECHO REPLY to broadcas
 1) Open file */etc/sysctl.conf*;
 2) Add line **net.ipv4.icmp_echo_ignore_broadcasts=0**;
 3) Execute **sudo sysctl -p** from command line to apply configuration changes. This line is to be executed on each Mininet host after its deployment;
+
+# Credits
+This project has been realized as assignment for the course of Smart and Programmable Networks, A.A. 2023-2024
+Co-authored by Alessandro D'Amico alessandro99damico@gmail.com
+Master Degree in Telecommunication Engineering: Computing, Smart Sensing, and Networking
+DIMES (Dipartimento di Ingegneria Informatica, Modellistica, Elettronica e Sistemistica
+UNICAL (Università della Calabria)
