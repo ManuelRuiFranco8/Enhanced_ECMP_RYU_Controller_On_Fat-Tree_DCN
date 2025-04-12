@@ -71,7 +71,7 @@ Co-authored by Alessandro D'Amico <alessandro99damico@gmail.com>
 Master Degree in Telecommunication Engineering: Computing, Smart Sensing, and Networking
 
 
-DIMES (Dipartimento di Ingegneria Informatica, Modellistica, Elettronica e Sistemistica
+DIMES (Dipartimento di Ingegneria Informatica, Modellistica, Elettronica e Sistemistica)
 
 
 UNICAL (Università della Calabria)
