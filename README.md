@@ -63,7 +63,15 @@ To test basic broadcast functionality, you need to enable ECHO REPLY to broadcas
 
 # Credits
 This project has been realized as assignment for the course of Smart and Programmable Networks, A.A. 2023-2024
-Co-authored by Alessandro D'Amico alessandro99damico@gmail.com
+
+
+Co-authored by Alessandro D'Amico <alessandro99damico@gmail.com>
+
+
 Master Degree in Telecommunication Engineering: Computing, Smart Sensing, and Networking
+
+
 DIMES (Dipartimento di Ingegneria Informatica, Modellistica, Elettronica e Sistemistica
+
+
 UNICAL (Università della Calabria)
