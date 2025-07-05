@@ -78,7 +78,7 @@ If you get error **`ImportError: cannot import name 'poll' from 'select' (unknow
 To test basic broadcast functionality, you need to enable ECHO REPLY to broadcast ping messages on Mininet hosts. To do this:
 1) Open file *`/etc/sysctl.conf`*;
 2) Add line **`net.ipv4.icmp_echo_ignore_broadcasts=0`**;
-3) Execute ```bash sudo sysctl -p ``` from command line to apply configuration changes. This line is to be executed on each Mininet host after its deployment;
+3) Execute ```bash sudo sysctl -p``` from command line to apply configuration changes. This line is to be executed on each Mininet host after its deployment;
 
 ---
 
