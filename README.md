@@ -1,48 +1,51 @@
-# VM Environment Set-Up:
+# Enhanced ECMP RYU Controller On Fat-Tree DCN
+
+## 💻 VM Environment Set-Up:
 - Ubuntu 20.04
 - Python 3.8.10
 - Ryu 4.34
 - Mininet 2.3.1
 - Open vSwitch 2.13.8
 
+---
 
-# Codes Explained:
+## 📄 Codes Explained:
 
-*fatTreeTopo.py* extends Mininet *Topo* class defining a fat-tree topology with configurable port density *k* and link parameters (using TC).
+*`fatTreeTopo.py`* extends Mininet *`Topo`* class defining a fat-tree topology with configurable port density *k* and link parameters (using **TC**).
 
-*RyuECMPController.py* runs a benchmark Ryu controller on *localhost:6653* which:
-- reads its own configuration from a .txt file;
-- keeps track of the Mininet-emulated network in a NetworkX graph ttribute;
-- monitors link state in real-time, saving current link state in a Pandas dataframe and exporting it in a .csv file;
+*`RyuECMPController.py`* runs a benchmark Ryu controller on `localhost:6653` which:
+- reads its own configuration from a `.txt` file;
+- keeps track of the Mininet-emulated network in a **NetworkX** graph attribute;
+- monitors link state in real-time, saving current link state in a **Pandas** dataframe and exporting it in a `.csv` file;
 - provides proactive ECMP routing ("Equal Cost MultiPath") with hash-based path selection for unicast ARP/IPv4 traffic in the topology;
 - provides proactive fat-tree-specific routing for broadcast IPv4 traffic in the topology;
-- registers all operations in a .txt file;
+- registers all operations in a `.txt` file;
 
-*RyuEnhancedECMPController.py* runs an ehanced Ryu controller on *localhost:6653* which:
-- reads its own configuration from a .txt file;
-- keeps track of the Mininet-emulated network in a NetworkX graph attribute;
-- monitors link state in real-time, saving current link state in a Pandas dataframe and exporting it in a .csv file;
+*`RyuEnhancedECMPController.py`* runs an ehanced Ryu controller on `localhost:6653` which:
+- reads its own configuration from a `.txt` file;
+- keeps track of the Mininet-emulated network in a **NetworkX** graph attribute;
+- monitors link state in real-time, saving current link state in a **Pandas** dataframe and exporting it in a `.csv` file;
 - defines a REST endpoint so that current link state may be retrieved in JSON format with an HTTP GET request;
 - provides default proactive ECMP routing ("Equal Cost MultiPath") with hash-based path selection for unicast ARP/IPv4 traffic in the topology;
 - provides proactive fat-tree-specific routing for broadcast IPv4 traffic in the topology;
 - provides ad-hoc elephant flow routing with a VLB-like multipath approach ("Valiant Load-Balancing"); 
-- registers all operations in a .txt file;
+- registers all operations in a `.txt` file;
 
-*DetectElephant.py* monitors all packets transmitted by a Mininet-emulated host by sniffing on host's L2 interface using Scapy. When an elephant flow is detected, an in-band notification is transmitted.
-Discovered elephant flows are saved in a Pandas dataframe and exported in a .csv file.
+*`DetectElephant.py`* monitors all packets transmitted by a Mininet-emulated host by sniffing on host's L2 interface using Scapy. When an elephant flow is detected, an in-band notification is transmitted.
+Discovered elephant flows are saved in a Pandas dataframe and exported in a `.csv` file.
 
-*dataCenter.py* does as follows:
-- writes configurations for the controller in a .txt file;
+*`dataCenter.py`* does as follows:
+- writes configurations for the controller in a `.txt` file;
 - emulates network with Mininet by deploying a fat-tree topology object;
 - performs reachability test between hosts in the topology issuing ping commands;
-- starts broadcast/unicast IPv4 traffic on network's hosts issuing hping3 commands;
-- runs a thread that periodically fetches link state from controller with an HTTP GET and runs an heuristic to intelligently decide which switches turn off/on to save energy and avoid congestion. All operations are recorded in a .tx file;
+- starts broadcast/unicast IPv4 traffic on network's hosts issuing **hping3** commands;
+- runs a thread that periodically fetches link state from controller with an HTTP GET and runs an heuristic to intelligently decide which switches turn off/on to save energy and avoid congestion. All operations are recorded in a `.txt` file;
 
-*FlowResults.py* takes .csv file written by *DetectElephant.py* and computes stats about elephant flows detection, saving them in a .txt file.
+*`FlowResults.py`* takes `.csv` file written by *`DetectElephant.py`* and computes stats about elephant flows detection, saving them in a `.txt` file.
 
-*LinkResults.py* takes .csv file written by controller code and computes new aggregate statistics, saving them in a .csv file.
+*`LinkResults.py`* takes `.csv` file written by controller code and computes new aggregate statistics, saving them in a `.csv` file.
 
-*MeanStatsPlots.py* and *MeanStatsPlotsHeuristics.py* take the .csv files generated by *LinkResults.py* in multiple iterations (each iteration is a simulation), computing mean stats of all simulations and plotting them using Matplotlib.
+*`MeanStatsPlots.py*` and `*MeanStatsPlotsHeuristics.py*` take the `.csv` files generated by `*LinkResults.py*` in multiple iterations (each iteration is a simulation), computing mean stats of all simulations and plotting them using **Matplotlib**.
 
 # How to run a simulation:
 1) Download all the codes in you VM environment;
