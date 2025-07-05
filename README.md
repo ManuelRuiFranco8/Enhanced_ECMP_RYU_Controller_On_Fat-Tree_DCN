@@ -58,7 +58,7 @@ Discovered elephant flows are saved in a Pandas dataframe and exported in a `.cs
 sudo python3 dataCenter.py -k=[int] --core-agg-bw=[float] --core-agg-loss=[int] --core-agg-delay=[str] --core-agg-jitter=[str] --core-agg-max-queue=[int] --agg-edge-bw=[float] --agg-edge-loss=[int]  --agg-edge-delay=[str] --agg-edge-jitter=[str]  --agg-edge-max-queue=[int] --edge-server-bw=[float] --edge-server-loss=[int]  --edge-server-delay=[str] --edge-server-jitter=[str]  --edge-server-max-queue=[int] --arp (optional)
 ```
 
-4) Run Ryu controller from another terminal, with the following command:
+4) Run Ryu controller from another terminal, with the one of the following commands:
 
 ```bash
 ryu-manager RyuECMPController.py #benchmark controller
@@ -70,15 +70,15 @@ ryu-manager RyuEnhancedECMPController.py #enhanced controller
 ---
 
 ## ⚙️ Debugging:
-If you get error **ImportError: cannot import name 'poll' from 'select' (unknown location)** when running Ryu controller’s code, here’s the fix:
-1) Open file */usr/local/lib/python3.8/dist-packages/mininet/util.py*;
-1) Comment line **from select import poll, POLLIN, POLLHUP**;
-2) Add line **from select import \***;
+If you get error **`ImportError: cannot import name 'poll' from 'select' (unknown location)`** when running Ryu controller’s code, here’s the fix:
+1) Open file *`/usr/local/lib/python3.8/dist-packages/mininet/util.py`*;
+1) Comment line **`from select import poll, POLLIN, POLLHUP`**;
+2) Add line **`from select import \*`**;
 
 To test basic broadcast functionality, you need to enable ECHO REPLY to broadcast ping messages on Mininet hosts. To do this:
-1) Open file */etc/sysctl.conf*;
-2) Add line **net.ipv4.icmp_echo_ignore_broadcasts=0**;
-3) Execute **sudo sysctl -p** from command line to apply configuration changes. This line is to be executed on each Mininet host after its deployment;
+1) Open file *`/etc/sysctl.conf`*;
+2) Add line **`net.ipv4.icmp_echo_ignore_broadcasts=0`**;
+3) Execute ```bash sudo sysctl -p ``` from command line to apply configuration changes. This line is to be executed on each Mininet host after its deployment;
 
 ---
 
